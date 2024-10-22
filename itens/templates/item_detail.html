@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h3 class="display-4">Detalhes do Item</h3>
+
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">{{ object.product }}</h3>
+        <p class="card-text">Tamanho: {{ object.size }}</p>
+        <p class="card-text">Quantidade: {{ object.quantity }}</p>
+      </div>
+    </div>
+
+    <a href="{% url 'item_list' %}" class="btn btn-secondary mt-3">Voltar para a Lista de Itens</a>
+  </div>
+{% endblock %}

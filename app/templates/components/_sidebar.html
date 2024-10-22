@@ -1,0 +1,97 @@
+<div class="row flex-nowrap">
+  <div class="col-auto col-md-0 col-xl-0 px-0 bg-dark">
+    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white">
+      <button class="btn btn-dark d-block d-sm-none mb-3" type="button" data-bs-toggle="collapse"
+        data-bs-target="#menuCollapse" aria-expanded="false" aria-controls="menuCollapse">
+        <i class="bi bi-list fs-4"></i>
+      </button>
+      <div class="collapse d-sm-block" id="menuCollapse">
+        <ul class="nav flex-column align-items-start" id="menu">
+          <li>
+            <a href="{% url 'home' %}" class="nav-link px-0 align-middle">
+              <i class="bi bi-speedometer2 fs-4"></i>
+              <span class="ms-1">Dashboard</span>
+            </a>
+          </li>
+          {% if perms.suppliers.view_supplier %}
+            <li>
+              <a href="{% url 'supplier_list' %}" class="nav-link px-0 align-middle">
+                <i class="bi bi-truck fs-4"></i>
+                <span class="ms-1">Fornecedores</span>
+              </a>
+            </li>
+          {% endif %}
+          {% if perms.brands.view_brand %}
+            <li>
+              <a href="{% url 'brand_list' %}" class="nav-link px-0 align-middle">
+                <i class="bi bi-shop fs-4"></i>
+                <span class="ms-1">Marcas</span>
+              </a>
+            </li>
+          {% endif %}
+          {% if perms.categories.view_category %}
+            <li>
+              <a href="{% url 'category_list' %}" class="nav-link px-0 align-middle">
+                <i class="bi bi-tags fs-4"></i>
+                <span class="ms-1">Categorias</span>
+              </a>
+            </li>
+          {% endif %}
+          {% if perms.size.view_size %}
+            <li>
+              <a href="{% url 'size_list' %}" class="nav-link px-0 align-middle">
+                <i class="bi bi-arrows-angle-contract fs-4"></i>
+                <span class="ms-1">Tamanhos</span>
+              </a>
+            </li>
+          {% endif %}
+          {% if perms.products.view_product %}
+            <li>
+              <a href="{% url 'product_list' %}" class="nav-link px-0 align-middle">
+                <i class="bi bi-box-seam fs-4"></i>
+                <span class="ms-1">Produtos</span>
+              </a>
+            </li>
+          {% endif %}
+          {% if perms.itens.view_item %}
+          <li>
+            <a href="{% url 'item_list' %}" class="nav-link px-0 align-middle">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-boxes" viewBox="0 0 16 16" style="font-size: 1.5em;">
+                <path d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434zM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567zM7.5 9.933l-2.75 1.571v3.134l2.75-1.571zm1 3.134 2.75 1.571v-3.134L8.5 9.933zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567zm2.242-2.433V3.504L8.5 5.076V8.21zM7.5 8.21V5.076L4.75 3.504v3.134zM5.258 2.643 8 4.21l2.742-1.567L8 1.076zM15 9.933l-2.75 1.571v3.134L15 13.067zM3.75 14.638v-3.134L1 9.933v3.134z"/>
+              </svg>
+              <span class="ms-1">Estoque</span>
+            </a>
+          </li>
+          {% endif %}
+          {% if perms.inflows.view_inflow %}
+            <li>
+              <a href="{% url 'inflow_list' %}" class="nav-link px-0 align-middle">
+                <i class="bi bi-arrow-down-left-square fs-4"></i>
+                <span class="ms-1">Entradas</span>
+              </a>
+            </li>
+          {% endif %}
+          {% if perms.outflows.view_outflow %}
+            <li>
+              <a href="{% url 'outflow_list' %}" class="nav-link px-0 align-middle">
+                <i class="bi bi-arrow-up-right-square fs-4"></i>
+                <span class="ms-1">Saídas</span>
+              </a>
+            </li>
+          {% endif %}
+          <li class="nav-item">
+            {% if user.is_authenticated %}
+            <form action="{% url 'logout' %}" method="post" id="logout-form" class="nav-link px-0 align-middle">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-link text-decoration-none text-reset nav-link px-0 align-middle">
+                <i class="bi bi-box-arrow-right fs-4 align-middle"></i>
+                <span class="ms-1 align-middle">Sair</span>
+              </button>
+            </form>
+            {% endif %}
+          </li>
+        </ul>
+      </div>
+      <hr>
+    </div>
+  </div>
